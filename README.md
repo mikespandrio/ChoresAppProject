@@ -5,4 +5,6 @@ Technologies Used:
 - Spring Boot
 - JSF
 - Hibernate
-... and more to follow
+- ... and more to follow
+
+Feature list will be added here
