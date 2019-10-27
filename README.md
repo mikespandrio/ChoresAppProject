@@ -1,5 +1,5 @@
 # [WIP] ChoresAppProject (developed by Mike Spandrio)
-- This is a simple Sprint Boot demo application to manage chore lists
+- This is a simple Spring Boot demo application to manage chore lists
 - It is a work in progress and not intended for any production use (yet!)
 - Default login username is "admin" and password is "password"
 - No true authentication is configured yet
