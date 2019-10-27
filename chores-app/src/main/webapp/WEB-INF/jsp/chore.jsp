@@ -7,14 +7,11 @@
 <title>Troublesome Chores</title>
 </head>
 <body>
-<font color="red">${errorMessage}</font>
-<form method="post">
-	
-	Name: <input type="text" name="name" />
-	<br>
-	Password: <input type="password" name="password" />
-	<br> 
-	<input type="submit" />
-</form>
+	<h2>Add/Update a Chore (user: ${name})</h2>
+	<hr>	
+	<form method="post">
+		Description: <input name="description" type="text"/>
+		<input type="submit">
+	</form>
 </body>
 </html>
