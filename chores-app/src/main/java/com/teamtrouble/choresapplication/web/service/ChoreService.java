@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -33,12 +34,31 @@ public class ChoreService {
 		return chores;
 	}
 	
+	public Chore retrieveChore(int id) {
+		Optional<Chore> chore = chores.stream().filter(c -> c.getId() == id).findAny();
+		
+		if (chore.isPresent()) {
+			return chore.get();
+		}
+		return null;
+	}
+	
+	public void addChore(Chore chore) {
+		chores.add(chore);
+	}
+	
 	public void addChore(String description, Date dueDate, String user) {
 		this.addChore(description, dueDate, false, null, user);
 	}
 	
 	public void addChore(String description, Date dueDate, boolean repeatAtCadence, Cadence cadence, String user) {
 		chores.add(new Chore(++choreCount, description, dueDate, repeatAtCadence, cadence, user, false, null));
+	}
+	
+	public void updateChore(Chore chore) {
+		// TODO: actually implement this in a sane way.
+		deleteChore(chore.getId());
+		addChore(chore);
 	}
 	
 	public void deleteChore(int id) {

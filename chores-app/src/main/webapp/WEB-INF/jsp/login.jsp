@@ -1,20 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Troublesome Chores</title>
-</head>
-<body>
-<font color="red">${errorMessage}</font>
-<form method="post">
-	
-	Name: <input type="text" name="name" />
-	<br>
-	Password: <input type="password" name="password" />
-	<br> 
-	<input type="submit" />
-</form>
-</body>
-</html>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
+
+	<div class="container">
+	<font color="red">${errorMessage}</font>
+		<form:form method="post">		
+ 			Name: 
+			<input type="text" name="name" />
+			Password: 
+			<input type="password" name="password" /> 
+			
+			<br><br> 
+			<input type="submit" />
+		</form:form>
+	</div>
+
+<%@ include file="common/footer.jspf" %>

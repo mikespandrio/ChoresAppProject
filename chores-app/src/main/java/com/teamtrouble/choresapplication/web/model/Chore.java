@@ -2,6 +2,8 @@ package com.teamtrouble.choresapplication.web.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Chore {
 
 	public enum Cadence {
@@ -9,21 +11,29 @@ public class Chore {
 	}
 
 	private int id;
+	
+	@Size(min=3, message="Please enter a longer chore description!")
 	private String description;
 	private Date targetDate;
-	private boolean repeatAtCadence;
+	private boolean isRepeatAtCadence;
 
 	private Cadence cadence;
 	private String createdBy;
 	private boolean isComplete;
 	private String completedBy;
+	
+	// Default constructor to make Spring happy
+	public Chore() {
+		super();
+	}
 
 	public Chore(int id, String description, Date targetDate, boolean repeatAtCadence, Cadence cadence,
 			String createdBy, boolean isComplete, String completedBy) {
+		super();
 		this.id = id;
 		this.description = description;
 		this.targetDate = targetDate;
-		this.repeatAtCadence = repeatAtCadence;
+		this.isRepeatAtCadence = repeatAtCadence;
 		this.cadence = cadence;
 		this.createdBy = createdBy;
 		this.isComplete = isComplete;
@@ -55,11 +65,11 @@ public class Chore {
 	}
 
 	public boolean getIsRepeatAtCadence() {
-		return repeatAtCadence;
+		return isRepeatAtCadence;
 	}
 
 	public void setIsRepeatAtCadence(boolean repeatAtCadence) {
-		this.repeatAtCadence = repeatAtCadence;
+		this.isRepeatAtCadence = repeatAtCadence;
 	}
 
 	public Cadence getCadence() {
@@ -106,7 +116,7 @@ public class Chore {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
 		result = prime * result + (isComplete ? 1231 : 1237);
-		result = prime * result + (repeatAtCadence ? 1231 : 1237);
+		result = prime * result + (isRepeatAtCadence ? 1231 : 1237);
 		result = prime * result + ((targetDate == null) ? 0 : targetDate.hashCode());
 		return result;
 	}
@@ -141,7 +151,7 @@ public class Chore {
 			return false;
 		if (isComplete != other.isComplete)
 			return false;
-		if (repeatAtCadence != other.repeatAtCadence)
+		if (isRepeatAtCadence != other.isRepeatAtCadence)
 			return false;
 		if (targetDate == null) {
 			if (other.targetDate != null)
@@ -154,7 +164,7 @@ public class Chore {
 	@Override
 	public String toString() {
 		return "Chore [id=" + id + ", description=" + description + ", targetDate=" + targetDate + ", repeatAtCadence="
-				+ repeatAtCadence + ", cadence=" + cadence + ", createdBy=" + createdBy + ", isComplete=" + isComplete
+				+ isRepeatAtCadence + ", cadence=" + cadence + ", createdBy=" + createdBy + ", isComplete=" + isComplete
 				+ ", completedBy=" + completedBy + "]";
 	}
 
